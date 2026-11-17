@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪獸吃數字：極速快手大戰</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- 遊戲標題 -->
+        <header>
+            <h1>👾 怪獸吃數字：極速快手 🍔</h1>
+            <p>在時間用完前，幫貪吃小怪獸找出正確的數字！</p>
+        </header>
+
+        <!-- 模式選擇畫面 -->
+        <section class="mode-select" id="mode-section">
+            <h2>選擇你的挑戰難題：</h2>
+            <div class="mode-buttons">
+                <button onclick="startGame(2, '🐰 兔子蘿蔔派對', 2)">
+                    <span class="icon">🐰</span>
+                    <span class="title">2個一數 (雙倍加溫)</span>
+                    <span class="desc">每次 +2 (2, 4, 6, 8...)</span>
+                </button>
+                <button onclick="startGame(5, '🦘 袋鼠蘋果大餐', 5)">
+                    <span class="icon">🦘</span>
+                    <span class="title">5個一數 (極速跳躍)</span>
+                    <span class="desc">每次 +5 (5, 10, 15, 20...)</span>
+                </button>
+                <button onclick="startGame(10, '🦍 大猩猩竹子瘋狂吃', 10)">
+                    <span class="icon">🦍</span>
+                    <span class="title">10個一數 (十倍狂飆)</span>
+                    <span class="desc">每次 +10 (10, 20, 30, 40...)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 遊戲進行畫面 (預設隱藏) -->
+        <section class="game-play hidden" id="play-section">
+            <div class="game-header-info">
+                <button class="back-btn" onclick="backToMenu()">⬅ 回主選單</button>
+                <span id="current-mode-title" class="mode-tag">模式：2個一數</span>
+                <div class="stats">
+                    <span>分數: <b id="score">0</b></span> | 
+                    <span>連擊: <b id="combo" class="combo-text">0</b>🔥</span>
+                </div>
+            </div>
+
+            <!-- 計時條 -->
+            <div class="timer-container">
+                <div id="timer-bar" class="timer-bar"></div>
+            </div>
+
+            <!-- 小怪獸舞台與對話框 -->
+            <div class="monster-stage">
+                <div id="monster-avatar" class="monster-normal">👾</div>
+                <div class="speech-bubble" id="speech-text">肚子好餓！下一個數字是多少？</div>
+            </div>
+
+            <!-- 題目序列顯示 -->
+            <div class="sequence-board" id="sequence-display">
+                <!-- 動態填入數字 -->
+            </div>
+
+            <!-- 刺激答題按鈕區 -->
+            <div class="question-box">
+                <div class="options-grid" id="options-container">
+                    <!-- 動態產生選項 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 結算/勝利彈窗 -->
+        <div class="modal hidden" id="result-modal">
+            <div class="modal-content">
+                <h2 id="result-title">⏰ 時間到！</h2>
+                <p id="result-message">你總共獲得了 0 分！</p>
+                <button onclick="restartGame()">再挑戰一次 🚀</button>
+                <button class="menu-btn-secondary" onclick="backToMenu()">回選單</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
